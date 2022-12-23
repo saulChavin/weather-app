@@ -1,23 +1,42 @@
+import { useEffect, useState } from 'react';
+import { getWeatherByCoords } from '../api/weather';
 import { WeatherDto } from '../interface/WeatherInterface';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import { CircularProgress } from '@mui/material';
 
 
 interface WeatherCardProps {
-    weather: WeatherDto;
 }
 
-export const WeatherCard = ({ weather }: WeatherCardProps) => {
+export const CurrentWeather = ({  }: WeatherCardProps) => {
+
+    const [weather, setWeather] = useState<any>(null);
+
+    const success = ({ coords }: any) => {
+        getWeatherByCoords(coords.latitude, coords.longitude)
+            .then(setWeather);
+    }
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(success, console.log);
+    }, [])
+
+    if (weather == null) return (
+        <div className='flex flex-1 justify-center items-center h-full'>
+            <CircularProgress />
+        </div>
+    )
+   
+   
+    
 
     const { temp, temp_max, feels_like, humidity, temp_min } = weather.main;
     const [{ main, description, icon }] = weather.weather;
 
     return (
-        <div className='max-w-[320px] w-full h-full max-h-[620px] shadow-2xl rounded-3xl  flex flex-col '>
+        <div className='h-full'>
             <header className='flex flex-col items-center flex-wrap py-8'>
                 <h1 className='text-3xl text-center '>{weather.name}</h1>
-                <p className='text-5xl mt-4'>{temp}</p>
+                <p className='text-5xl mt-4'>{Math.floor(temp)}&#176;</p>
                 <img
                     src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
                     style={{
@@ -48,12 +67,6 @@ export const WeatherCard = ({ weather }: WeatherCardProps) => {
                 </div>
             </section>
 
-            <div className='flex justify-around items-center' style={{ flex: 1 }}>
-                <button><HomeRoundedIcon fontSize='medium' /></button>
-                <button><SearchOutlinedIcon fontSize='medium' /></button>
-                <button><SettingsOutlinedIcon fontSize='medium' /></button>
         </div>
-
-        </div >
     )
 }
