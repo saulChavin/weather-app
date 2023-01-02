@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <main className='container h-full flex justify-center items-center'>
+    <main className='h-full flex justify-center items-center dark: bg-zinc-900 text-gray-200'>
       <MainContainer />
     </main>
 

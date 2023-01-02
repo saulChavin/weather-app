@@ -6,7 +6,7 @@ interface WeatherMiniCardProps {
 
 export const WeatherMiniCard = ({ weather }: WeatherMiniCardProps) => {
   return (
-    <div className='flex flex-col justify-around shadow-lg h-36 rounded-3xl p-3 relative'>
+    <div className='flex flex-col justify-around shadow-lg h-36 rounded-3xl p-3 relative dark: bg-gradient-to-t from-neutral-900 via-neutral-800 to-neutral-600'>
 
       <div className='flex justify-around items-center'>
         <span>

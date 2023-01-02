@@ -4,12 +4,12 @@ import { useDarkmode } from '../hook/useDarkmode';
 
 export const SettingsView = () => {
 
-    const { isDarkMode, toggleMode } = useDarkmode();
+    const { mode, toggleMode } = useDarkmode();
 
     return (
         <div className='flex flex-col justify-center items-center h-full'>
             <button onClick={toggleMode}>
-                {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+                {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
             </button>
         </div>
     )
