@@ -1,6 +1,6 @@
 import { WeatherDto } from "../interface/WeatherInterface";
 
-const API_URL = 'http://api.openweathermap.org';
+const API_URL = 'https://api.openweathermap.org';
 const PATH = '/data/2.5/weather'
 const KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
