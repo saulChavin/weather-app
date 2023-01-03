@@ -6,7 +6,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 export const MainContainer = () => {
 
     return (
-        <div className='max-w-[320px] w-full h-full max-h-[620px] rounded-3xl  flex flex-col dark: bg-zinc-800 '>
+        <div className='w-full h-full md:max-w-[320px] md:max-h-[620px] md:rounded-3xl  flex flex-col dark: bg-neutral-900 '>
             <div className='flex-1'>
                 <Outlet />
             </div>

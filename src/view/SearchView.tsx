@@ -24,14 +24,18 @@ export const SearchView = () => {
 
     return (
         <div className='flex flex-col justify-around p-4'>
+            <h1 className='text-xl text-center my-4'>Elegir ubicación</h1>
             <input
                 placeholder='Search'
                 type='text'
-                className='border-slate-500 border-2 rounded-md p-2'
+                className='border-transparent border-2 rounded-xl p-2 bg-neutral-800/90'
             />
-            <div className=' grid grid-cols-2 gap-2 mt-4'>
-                {weathers.map(weather => (
-                    <WeatherMiniCard key={weather.name} weather={weather} />
+            <div className=' grid grid-cols-2 gap-2 mt-8'>
+                {weathers.map((weather, index) => (
+                    <div key={weather.name} className={index % 2 !== 0 ? 'mt-4' : ''}>
+                        <WeatherMiniCard weather={weather} />
+                    </div>
+
                 ))}
             </div>
 
