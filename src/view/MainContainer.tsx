@@ -21,7 +21,7 @@ const TabsMenu = () => {
 
     return (
         <div className='flex justify-around items-center py-4'>
-            <button onClick={() => navigate('home')}><HomeRoundedIcon fontSize='medium' /></button>
+            <button onClick={() => navigate('/')}><HomeRoundedIcon fontSize='medium' /></button>
             <button onClick={() => navigate('search')}><SearchOutlinedIcon fontSize='medium' /></button>
             <button onClick={() => navigate('settings')}><SettingsOutlinedIcon fontSize='medium' /></button>
         </div>
