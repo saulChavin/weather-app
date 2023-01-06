@@ -6,7 +6,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 export const MainContainer = () => {
 
     return (
-        <div className='w-full h-full md:max-w-[320px] md:max-h-[620px] md:rounded-3xl  flex flex-col dark: bg-neutral-900 '>
+        <div className='w-full relative h-full md:max-w-[320px] md:max-h-[620px] md:rounded-3xl  flex flex-col dark: bg-neutral-900 '>
             <div className='flex-1'>
                 <Outlet />
             </div>
@@ -20,10 +20,10 @@ const TabsMenu = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='flex justify-around items-center py-4'>
-            <button onClick={() => navigate('/')}><HomeRoundedIcon fontSize='medium' /></button>
-            <button onClick={() => navigate('search')}><SearchOutlinedIcon fontSize='medium' /></button>
-            <button onClick={() => navigate('settings')}><SettingsOutlinedIcon fontSize='medium' /></button>
-        </div>
+        <nav className='flex justify-around fixed md:absolute bottom-0 w-full items-center py-4'>
+            <a onClick={() => navigate('/')}><HomeRoundedIcon fontSize='medium' /></a>
+            <a onClick={() => navigate('search')}><SearchOutlinedIcon fontSize='medium' /></a>
+            <a onClick={() => navigate('settings')}><SettingsOutlinedIcon fontSize='medium' /></a>
+        </nav>
     )
 }
