@@ -2,6 +2,7 @@ import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import countriesJson from '../api/countries.json';
 import { getWeatherByCoords } from '../api/weather';
+import AutoComplete from '../components/Autocomplete';
 import { WeatherMiniCard } from '../components/WeatherMiniCard';
 import { WeatherDto } from '../interface/WeatherInterface';
 
@@ -23,15 +24,19 @@ export const SearchView = () => {
             });
     }, []);
 
+    const handleSearch = (evt: React.SyntheticEvent) => {
+        evt.preventDefault();
+        const inputEl = (evt.target as HTMLFormElement).firstChild as HTMLInputElement;
+        const searchValue = inputEl.value;
+
+
+    }
+
 
     return (
         <div className='flex flex-col justify-around p-4 items-center'>
             <h1 className='text-xl text-center my-4'>Elegir ubicación</h1>
-            <input
-                placeholder='Search'
-                type='text'
-                className='border-transparent border-2 rounded-xl p-2 bg-neutral-800/90 w-full'
-            />
+            <AutoComplete elements={countriesJson.countries.map(c => c.name)} />
 
             {!weathers.length
                 ? <CircularProgress sx={{ mt: 2 }} />
