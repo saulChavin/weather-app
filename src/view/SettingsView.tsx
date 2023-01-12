@@ -2,7 +2,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useDarkmode } from '../hook/useDarkmode';
 
-export const SettingsView = () => {
+const SettingsView = () => {
 
     const { mode, toggleMode } = useDarkmode();
 
@@ -14,3 +14,5 @@ export const SettingsView = () => {
         </div>
     )
 }
+
+export default SettingsView

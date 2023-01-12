@@ -5,29 +5,18 @@ import { CircularProgress } from '@mui/material';
 
 
 interface WeatherCardProps {
+    weather: WeatherDto | null;
 }
 
-export const CurrentWeather = ({  }: WeatherCardProps) => {
-
-    const [weather, setWeather] = useState<any>(null);
-
-    const success = ({ coords }: any) => {
-        getWeatherByCoords(coords.latitude, coords.longitude)
-            .then(setWeather);
-    }
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(success, console.log);
-    }, [])
+export const CurrentWeather = ({
+    weather
+  }: WeatherCardProps) => {
 
     if (weather == null) return (
         <div className='flex flex-1 justify-center items-center h-full'>
             <CircularProgress />
         </div>
     )
-   
-   
-    
 
     const { temp, temp_max, feels_like, humidity, temp_min } = weather.main;
     const [{ main, description, icon }] = weather.weather;

@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface AutocompleteProps {
     elements: any[]
@@ -14,6 +15,10 @@ const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref
         setSearch(evt.target.value)
     }
 
+    const handleBlur = () => {
+        setTimeout(() => setIsSearchActive(false), 200);
+    }
+
     const active = isSearchActive ? 'h-80' : 'h-0';
 
     return (
@@ -24,18 +29,24 @@ const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref
                 placeholder='Search'
                 onChange={handleChange}
                 onClick={() => setIsSearchActive(true)}
-                onBlur={() => setIsSearchActive(false)}
-                type='select'
+                onBlur={handleBlur}
+                type='text'
                 className='border-transparent border-2 rounded-xl p-2 bg-neutral-800/90 w-full'
             />
 
             {/* Results container */}
             <div className={`${active} mt absolute w-full transition-[height] overflow-y-auto max-h-80 bg-neutral-800 shadow-lg rounded-b-2xl`}>
-                <ul className='p-4'>
+                <ul >
                     {elements
                         .filter(el => el.toLowerCase().startsWith(search.toLowerCase()))
-                        .map((el, index) => <li key={`${el}-${index}`} className='py-1'>{el}</li>)
-                    }
+                        .map((el, index) => (
+                            <li
+                                key={`${el}-${index}`}
+                                className='py-2 px-4 cursor-default hover:bg-neutral-600'
+                            >
+                                <Link to={`/country/${el}`}>{el}</Link>
+                            </li>
+                        ))}
                 </ul>
             </div>
         </div>

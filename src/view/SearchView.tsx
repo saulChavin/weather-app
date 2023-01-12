@@ -6,7 +6,7 @@ import AutoComplete from '../components/Autocomplete';
 import { WeatherMiniCard } from '../components/WeatherMiniCard';
 import { WeatherDto } from '../interface/WeatherInterface';
 
-export const SearchView = () => {
+const SearchView = () => {
 
     const defaultCountries = countriesJson.countries.slice(0, 4);
     const [weathers, setWeahers] = useState([] as WeatherDto[]);
@@ -55,10 +55,4 @@ export const SearchView = () => {
     )
 }
 
-const SkelletonCard = () => {
-    return (
-        <div className="animate-pulse">
-
-        </div>
-    )
-}
+export default SearchView;
