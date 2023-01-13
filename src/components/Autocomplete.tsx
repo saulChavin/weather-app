@@ -37,16 +37,7 @@ const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref
             {/* Results container */}
             <div className={`${active} mt absolute w-full transition-[height] overflow-y-auto max-h-80 bg-neutral-800 shadow-lg rounded-b-2xl`}>
                 <ul >
-                    {elements
-                        .filter(el => el.toLowerCase().startsWith(search.toLowerCase()))
-                        .map((el, index) => (
-                            <li
-                                key={`${el}-${index}`}
-                                className='py-2 px-4 cursor-default hover:bg-neutral-600'
-                            >
-                                <Link to={`/country/${el}`}>{el}</Link>
-                            </li>
-                        ))}
+                    {elements}
                 </ul>
             </div>
         </div>

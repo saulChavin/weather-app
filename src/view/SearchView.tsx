@@ -28,8 +28,6 @@ const SearchView = () => {
         evt.preventDefault();
         const inputEl = (evt.target as HTMLFormElement).firstChild as HTMLInputElement;
         const searchValue = inputEl.value;
-
-
     }
 
 
