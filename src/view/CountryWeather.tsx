@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getWeatherByCity } from '../api/weather';
 import { WeatherDto } from '../interface/WeatherInterface';
 import { CurrentWeather } from '../components/CurrentWeather';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CountryWeather = () => {
 
@@ -17,15 +18,15 @@ const CountryWeather = () => {
     }, [])
 
     return (
-        <>
+        <section className='w-full'>
             <button
-                className='bg-cyan-900 rounded-full w-11 h-11 mx-4 mt-4'
+                className='bg-cyan-700 rounded-full w-11 h-11 mx-4 mt-4'
                 onClick={() => navigate('/search', { replace: true })}
             >
-                Back
+                <ArrowBackIcon />
             </button>
             <CurrentWeather weather={weather} />
-        </>
+        </section>
     )
 }
 

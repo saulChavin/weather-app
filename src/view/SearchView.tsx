@@ -1,5 +1,6 @@
 import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import countriesJson from '../api/countries.json';
 import { getWeatherByCoords } from '../api/weather';
 import AutoComplete from '../components/Autocomplete';
@@ -10,6 +11,7 @@ const SearchView = () => {
 
     const defaultCountries = countriesJson.countries.slice(0, 4);
     const [weathers, setWeahers] = useState([] as WeatherDto[]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         let requestCountries: Promise<WeatherDto>[] = [];
@@ -24,17 +26,20 @@ const SearchView = () => {
             });
     }, []);
 
-    const handleSearch = (evt: React.SyntheticEvent) => {
-        evt.preventDefault();
-        const inputEl = (evt.target as HTMLFormElement).firstChild as HTMLInputElement;
-        const searchValue = inputEl.value;
+
+    const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(evt.target.value)
     }
 
 
     return (
-        <div className='flex flex-col justify-around p-4 items-center'>
+        <div className='flex flex-col p-4 items-center w-full'>
             <h1 className='text-xl text-center my-4'>Elegir ubicación</h1>
-            <AutoComplete elements={countriesJson.countries.map(c => c.name)} />
+            <AutoComplete
+                elements={countriesList}
+                value={search}
+                onChange={handleChange}
+            />
 
             {!weathers.length
                 ? <CircularProgress sx={{ mt: 2 }} />
@@ -52,5 +57,14 @@ const SearchView = () => {
         </div>
     )
 }
+
+const countriesList = countriesJson.countries.map(({ name }, index) => (
+    <li
+        key={`${name}-${index}`}
+        className='h-10 flex cursor-default hover:bg-neutral-600'
+    >
+        <Link to={`/country/${name}`} className='w-full h-full flex items-center px-2'>{name}</Link>
+    </li>
+))
 
 export default SearchView;

@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { getWeatherByCoords } from '../api/weather';
 import { WeatherDto } from '../interface/WeatherInterface';
 import { CircularProgress } from '@mui/material';
 
@@ -10,7 +8,7 @@ interface WeatherCardProps {
 
 export const CurrentWeather = ({
     weather
-  }: WeatherCardProps) => {
+}: WeatherCardProps) => {
 
     if (weather == null) return (
         <div className='flex flex-1 justify-center items-center h-full'>
@@ -22,7 +20,7 @@ export const CurrentWeather = ({
     const [{ main, description, icon }] = weather.weather;
 
     return (
-        <div className='h-full'>
+        <div className='flex flex-col flex-1'>
             <header className='flex flex-col items-center flex-wrap py-8'>
                 <h1 className='text-3xl text-center '>{weather.name}</h1>
                 <p className='text-5xl mt-4'>{Math.floor(temp)}&#176;</p>

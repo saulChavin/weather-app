@@ -3,17 +3,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 interface AutocompleteProps {
-    elements: any[]
+    elements: any[];
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    value?: string | number | readonly string[];
 }
 
 const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref) => {
-    const { elements } = props;
-    const [search, setSearch] = useState('');
+    const { elements, onChange, value } = props;
+
     const [isSearchActive, setIsSearchActive] = useState(false);
 
-    const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(evt.target.value)
-    }
+
 
     const handleBlur = () => {
         setTimeout(() => setIsSearchActive(false), 200);
@@ -25,9 +25,9 @@ const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref
         <div className="relative w-full">
             <input
                 ref={ref}
-                value={search}
-                placeholder='Search'
-                onChange={handleChange}
+                value={value}
+                placeholder='Buscar'
+                onChange={onChange}
                 onClick={() => setIsSearchActive(true)}
                 onBlur={handleBlur}
                 type='text'
