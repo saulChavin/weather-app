@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <main className='flex justify-center h-full items-center dark: bg-zinc-800 text-gray-200'>
+    <main className='flex justify-center h-full items-center dark:bg-zinc-800 dark:text-gray-200'>
       <MainContainer />
     </main>
 
