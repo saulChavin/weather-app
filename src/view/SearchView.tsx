@@ -31,12 +31,23 @@ const SearchView = () => {
         setSearch(evt.target.value)
     }
 
+    const countries = countriesJson.countries
+        .filter(({ name }) => name.toLowerCase().startsWith(search.toLowerCase()))
+        .map(({ name }, index) => (
+            <li
+                key={`${name}-${index}`}
+                className='h-10 flex cursor-default hover:bg-neutral-600'
+            >
+                <Link to={`/country/${name}`} className='w-full h-full flex items-center px-2'>{name}</Link>
+            </li>
+        ))
+
 
     return (
         <div className='flex flex-col p-4 items-center w-full'>
             <h1 className='text-xl text-center my-4'>Elegir ubicación</h1>
             <AutoComplete
-                elements={countriesList}
+                elements={countries}
                 value={search}
                 onChange={handleChange}
             />
@@ -57,14 +68,5 @@ const SearchView = () => {
         </div>
     )
 }
-
-const countriesList = countriesJson.countries.map(({ name }, index) => (
-    <li
-        key={`${name}-${index}`}
-        className='h-10 flex cursor-default hover:bg-neutral-600'
-    >
-        <Link to={`/country/${name}`} className='w-full h-full flex items-center px-2'>{name}</Link>
-    </li>
-))
 
 export default SearchView;
