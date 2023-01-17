@@ -31,11 +31,11 @@ const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref
                 onClick={() => setIsSearchActive(true)}
                 onBlur={handleBlur}
                 type='text'
-                className='border-transparent border-2 rounded-xl p-2 bg-neutral-800/90 w-full'
+                className='border-transparent border-2 rounded-xl p-2 bg dark:bg-neutral-800/90 w-full'
             />
 
             {/* Results container */}
-            <div className={`${active} mt absolute w-full transition-[height] overflow-y-auto max-h-80 bg-neutral-800 shadow-lg rounded-b-2xl`}>
+            <div className={`${active} mt absolute w-full transition-[height] overflow-y-auto max-h-80 bg-zinc-100 dark:bg-neutral-800 shadow-lg rounded-b-2xl`}>
                 <ul >
                     {elements}
                 </ul>

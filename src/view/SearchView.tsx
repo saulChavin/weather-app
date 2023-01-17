@@ -36,7 +36,7 @@ const SearchView = () => {
         .map(({ name }, index) => (
             <li
                 key={`${name}-${index}`}
-                className='h-10 flex cursor-default hover:bg-neutral-600'
+                className='h-10 flex cursor-default hover:bg-neutral-300 dark:hover:bg-neutral-600'
             >
                 <Link to={`/country/${name}`} className='w-full h-full flex items-center px-2'>{name}</Link>
             </li>

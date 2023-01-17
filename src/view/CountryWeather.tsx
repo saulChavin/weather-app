@@ -20,7 +20,7 @@ const CountryWeather = () => {
     return (
         <section className='w-full'>
             <button
-                className='bg-cyan-700 rounded-full w-11 h-11 mx-4 mt-4'
+                className='bg-blue-300 dark:bg-cyan-700 rounded-full w-11 h-11 mx-4 mt-4'
                 onClick={() => navigate('/search', { replace: true })}
             >
                 <ArrowBackIcon />
