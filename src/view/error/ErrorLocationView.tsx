@@ -1,8 +1,8 @@
 import clouds from '../../assets/rain.png'
 
-export const ErrorLocationView = () => {
+export const ErrorLocationView = ({text}: {text?: string}) => {
     return (
-        <div className='flex flex-col items-center self-center'>
+        <div className='flex flex-col items-center self-center w-full'>
             <img
                 src={clouds}
                 className=''
@@ -13,7 +13,7 @@ export const ErrorLocationView = () => {
             <h1
                 className='text-center p-8 text-xl text-neutral-400'
             >
-                Esta un poco nublado... no fue posible obtener la informacion del clima
+                {text || "Esta un poco nublado... no fue posible obtener la informacion del clima"}
             </h1>
         </div>
 

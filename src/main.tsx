@@ -1,12 +1,12 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './Root'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import SearchView from './view/SearchView';
 import SettingsView from './view/SettingsView';
 import CountryWeather from './view/CountryWeather';
 import HomeView from './view/HomeView';
+import { ErrorLocationView } from './view/error/ErrorLocationView';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: '/settings',
         element: <SettingsView />
+      },
+      {
+        path: '*',
+        element: <Navigate to='404' />
+      },
+      {
+        path: '/404',
+        element: <ErrorLocationView text='404 | Not found' />
       }
     ]
   }
@@ -36,6 +44,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   // <React.StrictMode>
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
   // </React.StrictMode>
 )
