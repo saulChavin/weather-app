@@ -35,7 +35,7 @@ const AutoComplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref
             />
 
             {/* Results container */}
-            <div className={`${active} mt absolute w-full transition-[height] overflow-y-auto max-h-80 bg-zinc-100 dark:bg-neutral-800 shadow-lg rounded-b-2xl`}>
+            <div data-testid='ac-container' className={`${active} mt absolute w-full transition-[height] overflow-y-auto max-h-80 bg-zinc-100 dark:bg-neutral-800 shadow-lg rounded-b-2xl`}>
                 <ul >
                     {elements}
                 </ul>
